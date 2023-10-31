@@ -6,13 +6,13 @@ export default function App() {
     <Navbar>
       <NavbarBrand>
       <Link color="foreground" href="/">
-        <p className="font-bold text-inherit">대소고 대숲</p>   
+        <p className="font-bold text-inherit color-white">대소고 대숲</p>   
       </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="/test">
-            만든사람
+      <NavbarItem>
+          <Link color="foreground" href="/write">
+            글쓰기
           </Link>
         </NavbarItem>
       </NavbarContent>
