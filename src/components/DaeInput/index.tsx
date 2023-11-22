@@ -49,66 +49,68 @@ export default function DaeInput() {
     e.preventDefault();
     console.log("s");
     postImage().then((resp) => {
-      postStory(resp.data.data);
+      postStory(resp.data);
       Router.push("/");
     });
   };
 
   return (
-    <form
-      method="post"
-      onSubmit={post}
-      className=" w-3/4 flex flex-col items-center "
-      autoComplete="off"
-    >
-      <Card className="mt-4  sm:w-3/4">
-        <CardHeader>
-          <div className="w-800 p-2">
-            <Input
-              size="sm"
-              type="text"
-              label="제목"
-              onValueChange={setTitle}
-              isRequired
-            />
-          </div>
-        </CardHeader>
-        <Divider />
-        <CardBody>
-          <Textarea onValueChange={setContent} size="lg" isRequired />
-        </CardBody>
-        <Divider />
-        <CardFooter className="p-6 flex justify-between">
-          <div>
-            <label
-              className="input-file-button cursor-pointer text-sm"
-              htmlFor="input-file"
-            >
-              사진 업로드
-            </label>
-            <Input
-              className="hidden"
-              id="input-file"
-              size="sm"
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                encodeFileToBase64(e.target.files[0]);
-              }}
-            />
-          </div>
-          <div>
-            <Button type="submit" size="md">
-              게시
-            </Button>
-          </div>
-        </CardFooter>
-      </Card>
-      <div className="mt-5">
-        {imageSrc && (
-          <Image width={350} height={350} src={imageSrc} alt="preview-img" />
-        )}
-      </div>
-    </form>
+    <>
+      <form
+        method="post"
+        onSubmit={post}
+        className=" w-3/4 flex flex-col items-center "
+        autoComplete="off"
+      >
+        <Card className="mt-4  sm:w-3/4">
+          <CardHeader>
+            <div className="w-800 p-2">
+              <Input
+                size="sm"
+                type="text"
+                label="제목"
+                onValueChange={setTitle}
+                isRequired
+              />
+            </div>
+          </CardHeader>
+          <Divider />
+          <CardBody>
+            <Textarea onValueChange={setContent} size="lg" isRequired />
+          </CardBody>
+          <Divider />
+          <CardFooter className="p-6 flex justify-between">
+            <div>
+              <label
+                className="input-file-button cursor-pointer text-sm"
+                htmlFor="input-file"
+              >
+                사진 업로드
+              </label>
+              <Input
+                className="hidden"
+                id="input-file"
+                size="sm"
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  encodeFileToBase64(e.target.files[0]);
+                }}
+              />
+            </div>
+            <div>
+              <Button type="submit" size="md">
+                게시
+              </Button>
+            </div>
+          </CardFooter>
+        </Card>
+        <div className="mt-5">
+          {imageSrc && (
+            <Image width={350} height={350} src={imageSrc} alt="preview-img" />
+          )}
+        </div>
+      </form>
+    </>
   );
 }
